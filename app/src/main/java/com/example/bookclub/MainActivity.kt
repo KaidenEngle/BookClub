@@ -14,6 +14,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -60,24 +61,34 @@ fun BookCard(msg:Book, modifier: Modifier = Modifier) {
             contentDescription = "Marc's big ass",
             modifier = Modifier
                 .size(200.dp)
+                .padding(bottom = 4.dp)
         )
-
+        Surface(shape = MaterialTheme.shapes.medium, shadowElevation = 1.dp) {
             Text(
-                text = msg.title
-            )
-            Text(
-                text = "By " + msg.author,
-                fontSize = 12.sp
+                text = msg.title,
+                color = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier.padding(all = 4.dp)
             )
         }
+        Surface(shape = MaterialTheme.shapes.medium, shadowElevation = 2.dp) {
+            Text(
+                text = "By " + msg.author,
+                fontSize = 12.sp,
+                color = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier.padding(all = 4.dp)
+            )
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun PreviewBookCard(){
-    BookCard(
-        msg = Book("Crime", "Droid")
-    )
+    Surface {
+        BookCard(
+            msg = Book("Crime", "Droid")
+        )
+    }
 }
 
 @Composable
